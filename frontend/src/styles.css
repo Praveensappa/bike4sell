@@ -1,0 +1,16 @@
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+body { margin: 0; background: #f6f7fb; color: #1f2430; }
+.header { background: #111827; color: #fff; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.header nav { display: flex; gap: 10px; flex-wrap: wrap; }
+.header a { color: #dbeafe; text-decoration: none; }
+.container { padding: 20px; max-width: 1080px; margin: 0 auto; }
+.filters { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; margin-bottom: 12px; }
+input, textarea, button { padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; }
+button { cursor: pointer; background: #2563eb; color: #fff; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; color: inherit; text-decoration: none; }
+.panel { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; margin-bottom: 10px; display: grid; gap: 8px; }
+.state.loading { color: #1d4ed8; }
+.state.error { color: #b91c1c; }
+.state.empty { color: #64748b; }
+@media (max-width: 768px) { .container { padding: 12px; } .header { padding: 10px; } }

@@ -1,0 +1,22 @@
+{
+  "auth": {
+    "valid": {
+      "name": "QA User",
+      "email": "qa.user@bike4sell.com",
+      "mobile": "9123456789",
+      "password": "Pass@123"
+    },
+    "otp": "123456"
+  },
+  "sellBike": {
+    "title": "Test Bike",
+    "brand": "Yamaha",
+    "year": 2022,
+    "price": 120000,
+    "fuel_type": "Petrol",
+    "specs": "Single owner"
+  },
+  "checkout": {
+    "address": "Flat 101, QA Residency"
+  }
+}
