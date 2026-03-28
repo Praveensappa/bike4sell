@@ -13,8 +13,7 @@ frontend/.env
 npm-debug.log*
 
 # Test results
-test-results/
-playwright-report/
+
 
 # Build files
 dist/

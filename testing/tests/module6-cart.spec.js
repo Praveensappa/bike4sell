@@ -7,75 +7,89 @@ async function openCart(page) {
   ).toBeVisible();
 }
 
-test("TC_CART_F_01 - Cart page opens", async ({ page }) => {
+test("User can successfully access the cart page", async ({ page }) => {
   await openCart(page);
 });
-test("TC_CART_F_02 - Proceed to checkout visible", async ({ page }) => {
+
+test("User can proceed to checkout from the cart page", async ({ page }) => {
   await openCart(page);
   await expect(
     page.getByRole("button", { name: "Proceed to Checkout" }),
   ).toBeVisible();
 });
-test("TC_CART_F_03 - Empty state or list visible", async ({ page }) => {
+
+test("User can view cart items or empty state message", async ({ page }) => {
   await openCart(page);
   await expect(page.getByText(/Cart is empty|Bike #/i)).toBeVisible();
 });
-test("TC_CART_F_04 - Header link Browse visible", async ({ page }) => {
+
+test("User can navigate to browse section from cart page", async ({ page }) => {
   await openCart(page);
   await expect(page.getByRole("link", { name: "Browse" })).toBeVisible();
 });
-test("TC_CART_F_05 - Header link Auth visible", async ({ page }) => {
+
+test("User can access authentication section from cart page", async ({ page }) => {
   await openCart(page);
   await expect(page.getByRole("link", { name: "Auth" })).toBeVisible();
 });
-test("TC_CART_F_06 - Header link Sell Bike visible", async ({ page }) => {
+
+test("User can access sell bike feature from cart page", async ({ page }) => {
   await openCart(page);
   await expect(page.getByRole("link", { name: "Sell Bike" })).toBeVisible();
 });
-test("TC_CART_F_07 - Header link Orders visible", async ({ page }) => {
+
+test("User can navigate to orders section from cart page", async ({ page }) => {
   await openCart(page);
   await expect(page.getByRole("link", { name: "Orders" })).toBeVisible();
 });
-test("TC_CART_F_08 - Proceed button click navigates", async ({ page }) => {
+
+test("User is redirected to checkout after proceeding", async ({ page }) => {
   await openCart(page);
   await page.getByRole("button", { name: "Proceed to Checkout" }).click();
   await expect(page).toHaveURL(/\/checkout$/);
 });
-test("TC_CART_F_09 - Return to cart from checkout link", async ({ page }) => {
+
+test("User can return back to cart from checkout flow", async ({ page }) => {
   await page.goto("/checkout");
   await page.goto("/cart");
   await expect(page).toHaveURL(/\/cart$/);
 });
-test("TC_CART_F_10 - Cart heading text correct", async ({ page }) => {
+
+test("User can verify cart page heading information", async ({ page }) => {
   await openCart(page);
   await expect(
     page.getByRole("heading", { name: "Cart & Wishlist" }),
   ).toHaveText("Cart & Wishlist");
 });
-test("TC_CART_F_11 - Cart page title contains Bike4Sell", async ({ page }) => {
+
+test("Application title reflects correct branding on cart page", async ({ page }) => {
   await openCart(page);
   await expect(page).toHaveTitle(/Bike4Sell/i);
 });
-test("TC_CART_F_12 - Page body visible", async ({ page }) => {
+
+test("User can interact with the main content area of the cart page", async ({ page }) => {
   await openCart(page);
   await expect(page.locator("body")).toBeVisible();
 });
-test("TC_CART_F_13 - Main container visible", async ({ page }) => {
+
+test("User can access the main container of the cart page", async ({ page }) => {
   await openCart(page);
   await expect(page.locator("main.container")).toBeVisible();
 });
-test("TC_CART_F_14 - Navigation remains accessible", async ({ page }) => {
+
+test("User can access navigation elements consistently across the page", async ({ page }) => {
   await openCart(page);
   await expect(page.locator("nav")).toBeVisible();
 });
-test("TC_CART_F_15 - Checkout button remains enabled", async ({ page }) => {
+
+test("Checkout option remains available for user interaction", async ({ page }) => {
   await openCart(page);
   await expect(
     page.getByRole("button", { name: "Proceed to Checkout" }),
   ).toBeEnabled();
 });
 
-test("TC_CART_NF_01 - Mobile responsiveness", async ({ browser }) => {
+test("Application provides smooth experience on mobile devices", async ({ browser }) => {
   const context = await browser.newContext({ ...devices["Pixel 5"] });
   const page = await context.newPage();
   await openCart(page);
@@ -84,7 +98,8 @@ test("TC_CART_NF_01 - Mobile responsiveness", async ({ browser }) => {
   ).toBeVisible();
   await context.close();
 });
-test("TC_CART_NF_02 - Tablet responsiveness", async ({ browser }) => {
+
+test("Application layout adapts correctly for tablet devices", async ({ browser }) => {
   const context = await browser.newContext({ ...devices["iPad (gen 7)"] });
   const page = await context.newPage();
   await openCart(page);
@@ -93,7 +108,8 @@ test("TC_CART_NF_02 - Tablet responsiveness", async ({ browser }) => {
   ).toBeVisible();
   await context.close();
 });
-test("TC_CART_NF_03 - Basic load performance", async ({ page }) => {
+
+test("Cart page loads within acceptable performance limits", async ({ page }) => {
   const start = Date.now();
   await page.goto("/cart", { waitUntil: "domcontentloaded" });
   expect(Date.now() - start).toBeLessThan(4000);
