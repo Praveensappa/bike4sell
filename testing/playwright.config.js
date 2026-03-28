@@ -5,7 +5,10 @@ module.exports = defineConfig({
   testMatch: ['**/module*.spec.js'],
   timeout: 60000,
   retries: 1,
-  reporter: [['html', { outputFolder: 'playwright-report' }], ['list'],['allure-playwright']],
+  reporter: [
+    ['html', {open: 'never'}], 
+    ['allure-playwright']
+  ],
   use: {
     baseURL: 'http://localhost:5173',
     browserName: 'chromium',
