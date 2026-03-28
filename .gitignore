@@ -9,17 +9,7 @@ backend/.env
 frontend/.env
 
 # Logs
-*.log
-npm-debug.log*
 
-# Test results
-
-
-# Build files
-dist/
-build/
-.vite/
-.cache/
 
 # OS files
 .DS_Store
